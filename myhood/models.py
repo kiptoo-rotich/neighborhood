@@ -23,3 +23,9 @@ class Business(models.Model):
     neighborhood = models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
     business_email = models.EmailField(max_length=30)
     business_service= HTMLField()
+
+class Chat(models.Model):
+    message = HTMLField()
+    user=models.ForeignKey('User',null=True,on_delete=models.CASCADE)
+    posted_on = models.DateTimeField(auto_now_add=True, null=True)
+    neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)

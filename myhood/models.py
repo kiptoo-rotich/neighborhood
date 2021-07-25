@@ -19,13 +19,12 @@ class User(models.Model):
 class Business(models.Model):
     business_image = CloudinaryField('image',default='Image')
     business_name = models.CharField(max_length=30)
-    user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     neighborhood = models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
     business_email = models.EmailField(max_length=30)
     business_service= HTMLField()
 
 class Chat(models.Model):
     message = HTMLField()
-    user=models.ForeignKey('User',null=True,on_delete=models.CASCADE)
+    # user=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True, null=True)
     neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)

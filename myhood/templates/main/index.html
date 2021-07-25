@@ -1,4 +1,6 @@
 {%extends 'base.html'%}
 {%block content%}
-<h1 class="text-center">nice</h1>
+{%for chats in chats%}
+{{ chats.message}}
+{%endfor%}
 {%endblock%}

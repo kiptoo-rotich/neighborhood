@@ -11,7 +11,7 @@ class Neighborhood(models.Model):
     occupants_count= models.CharField(max_length=5)
     admin = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     
-class User(models.Model):
+class TheUser(models.Model):
     name = models.CharField(max_length=15)
     neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
     email = models.EmailField(max_length=30)
@@ -25,6 +25,6 @@ class Business(models.Model):
 
 class Chat(models.Model):
     message = HTMLField()
-    # user=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True, null=True)
     neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)

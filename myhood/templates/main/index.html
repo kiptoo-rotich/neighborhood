@@ -1,6 +1,21 @@
 {%extends 'base.html'%}
+{%load bootstrap3%}
 {%block content%}
-{%for chats in chats%}
-{{ chats.message}}
-{%endfor%}
+
+<div class="container">
+    <div class="top bg-light" style="border-radius: 5px; padding:1%;margin:1%;">
+        <h1 class="text-center">Post your thoughts!</h1>
+    </div>
+    <h3 class="text-center btn btn-info btn-md"><a href="{%url 'post_chat'%}" style="color:white;">What's in your mind?</a></h3> 
+    {%for chats in chats%}
+    <div class="row"
+        style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%; display: flex;flex-direction:column;">
+        <h6>{{chats.user}}</h6>
+        <p>{{chats.message}}</p>
+        <p><i>Posted on {{chats.posted_on}}</i></p>
+    </div>
+    {%endfor%}
+
+</div>
+
 {%endblock%}

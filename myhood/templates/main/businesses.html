@@ -1,7 +1,16 @@
 {%extends 'base.html'%}
+{%load bootstrap3%}
 {%block content%}
-{%for business in business%}
-{{ business.business_name}}
-{{business.business_service}}
-{%endfor%}
-{%endblock%}
+<div class="container">
+    {%for business in business%}
+
+    <div style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;" class="col-xm-12 col-sm-6 col-md-6 col-lg-6">
+        <img src="{{business.business_image.url}}" alt="" class="img-responsive" width="100%">
+        <h3>{{ business.business_name}}</h3>
+        <p>{{business.business_service}}</p>
+
+    </div>
+    {%endfor%}
+
+
+    {%endblock%}

@@ -4,10 +4,12 @@ from django.contrib import messages
 from .models import Business,Chat,Profile,Neighborhood
 from django.contrib.auth.models import User
 
+@login_required(login_url='/accounts/login/')
 def  index(request):
     chats=Chat.objects.all()
     return render(request,'main/index.html',{"chats":chats})
 
+@login_required(login_url='/accounts/login/')
 def  add_post(request):
     form= BusinessForm()
     if request.method == 'POST':
@@ -24,10 +26,12 @@ def  add_post(request):
     }
     return render(request,'main/add_post.html',context)
 
+@login_required(login_url='/accounts/login/')
 def businesses(request):
     business=Business.objects.all()
     return render(request,'main/businesses.html',{"business":business})
 
+@login_required(login_url='/accounts/login/')
 def post_chat(request):
     form=ChatForm()
     user=request.user
@@ -45,6 +49,7 @@ def post_chat(request):
     }
     return render(request,'main/chats.html',context)
 
+@login_required(login_url='/accounts/login/')
 def profile(request,id):
     profile_data = User.objects.get(id=id)
     current_user = request.user
@@ -58,6 +63,7 @@ def profile(request,id):
     context={"profile":profile,"current_user": current_user,"profile_data":profile_data}
     return render(request, 'main/profile.html',context)
 
+@login_required(login_url='/accounts/login/')
 def updateprofile(request):
     current_user = request.user
     profile=Profile.objects.all()
@@ -76,6 +82,7 @@ def updateprofile(request):
 
     return render(request, 'main/updateprofile.html',{"form": form} )
 
+@login_required(login_url='/accounts/login/')
 def single_business(request,id):
     try:
         business=Business.objects.get(id=id)
@@ -87,6 +94,7 @@ def neighbor(request):
     neighbor=Neighborhood.objects.all()
     return render(request,'main/places.html',{'neighbor':neighbor})
 
+@login_required(login_url='/accounts/login/')
 def search(request):
     if 'Search' in request.GET and request.GET['Search']:
         search_term=request.GET.get('Search')

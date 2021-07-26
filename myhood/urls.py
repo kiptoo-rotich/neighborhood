@@ -9,4 +9,5 @@ urlpatterns =[
     path('post_chat/',views.post_chat,name='post_chat'),
     path('accounts/profile/<id>',views.profile,name='profile'),
     path('update/',views.updateprofile,name = 'updateprofile'),
+    path('business/<int:id>',views.single_business,name='business'),
 ]

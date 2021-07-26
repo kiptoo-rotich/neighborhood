@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container">
+    <div class="row" style="background-color: white; border-radius:5px;padding:2%;margin-top:2%;">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <img src="{{business.business_image.url}}" class="img-responsive" alt="Image" width="100%">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <p>{{business.business_name}}</p>
+            <p>{{business.business_service}}</p>
+            <i>Posted <b>{{business.created_on|timesince}}</b> ago by <b>{{business.user}}</b></i>
+            <p>Email: {{business.business_email}}</p>
+        </div>
+    </div>
+</div>
+{%endblock%}

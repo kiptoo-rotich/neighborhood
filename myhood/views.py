@@ -78,7 +78,7 @@ def updateprofile(request):
 
 def single_business(request,id):
     try:
-        post=Business.objects.get(id=id)
+        business=Business.objects.get(id=id)
     except DoesNotExist:
         raise Http404()
-    return render(request,'main/single_business.html',{'post':post})
+    return render(request,'main/single_business.html',{'business':business})

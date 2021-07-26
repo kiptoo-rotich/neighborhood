@@ -3,13 +3,13 @@
 {%block content%}
 <div class="container">
 
-    <div class="row">
+    <div class="row" style="background-color: rgba(255, 255, 255, 0.664);margin-top:2%;">
 
         <form action="" method="POST" style="width:100%" enctype='multipart/form-data'>
             {% csrf_token %}
             {% bootstrap_form form %}
-            <div class="form-group"   style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;">
-                <input type="submit" class="btn btn-primary btn-md" value="Post">
+            <div class="form-group"   style="background-color:rgb(255, 255, 255);border-radius:5px; margin: 2%;">
+                <input type="submit" class="btn btn-primary btn-md" style="width:100%;font-weight:bold;text-transform:uppercase;" value="Post">
             </div>
             <input type="hidden" name="next" value="{{next}}">
         </form>

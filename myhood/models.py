@@ -18,14 +18,19 @@ class Neighborhood(models.Model):
     neighborhood_image = CloudinaryField('image',default='Image')
     neighborhood_name = models.CharField(max_length=50,null=True)
     neighborhood_location = models.CharField(max_length=30,null=True)
-    occupants_count= models.CharField(max_length=5)
     admin = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.neighborhood_name
     
 class TheUser(models.Model):
     name = models.CharField(max_length=15)
     neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
     email = models.EmailField(max_length=30)
 
+    def __str__(self):
+        return self.name
+    
 class Business(models.Model):
     business_image = CloudinaryField('image',default='Image')
     business_name = models.CharField(max_length=30)
@@ -34,8 +39,14 @@ class Business(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     business_service= HTMLField()
 
+    def __str__(self):
+        return self.business_image
+    
 class Chat(models.Model):
     message = HTMLField()
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True, null=True)
     neighborhood=models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user

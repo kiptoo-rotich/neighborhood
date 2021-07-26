@@ -8,14 +8,16 @@
         </div>
         <div class="col-xm-12 col-sm-10 col-md-10 col-lg-10">
             {%for business in business%}
-            <div style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;margin-top: 2%;"
-                class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
-                <img src="{{business.business_image.url}}" alt="" class="img-responsive" width="100%">
-                <h3>{{ business.business_name}}</h3>
-                <p>{{business.business_service}}</p>
-                <p><i>Posted on {{business.created_on}}</i></p>
-            </div>
-            {%endfor%}
+            <a href="{%url 'business' business.id%}">
+                <div style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;margin-top: 2%;"
+                    class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
+                    <img src="{{business.business_image.url}}" alt="" class="img-responsive" width="100%">
+                    <h3>{{ business.business_name}}</h3>
+            </a>
+            <p>{{business.business_service|truncatewords:15}}</p>
+            <p><i>Posted on {{business.created_on}}</i></p>
         </div>
+        {%endfor%}
     </div>
-    {%endblock%}
+</div>
+{%endblock%}

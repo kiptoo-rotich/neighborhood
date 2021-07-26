@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load bootstrap3%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            {%if profile_data.profile_pic.is_empty%}
+            <img src="{{profile_data.profile_pic.url}}" alt="Image" width="100%">
+            {%else%}
+            <img src="../../static/images/avatar1.png" width="250px" />
+            {%endif%}
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <h4>Username: {{current_user}}</h4>
+            <h5><i>Email: {{current_user.email}}</i></h5>
+            <p>Bio: {{profile_data.bio}}</p>
+            <a href="{%url 'updateprofile'%}"><button class="btn btn-md btn-info">Edit Profile</button></a>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+        </div>
+    </div>
+</div>
+{%endblock%}

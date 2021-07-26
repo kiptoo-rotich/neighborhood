@@ -4,6 +4,16 @@ from cloudinary.models import CloudinaryField
 from tinymce.models import HTMLField
 import datetime as dt
 
+
+class Profile(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    bio=models.CharField(blank=True,max_length=400)
+    profile_pic = CloudinaryField('image',default='Image')
+    phone_number=models.CharField(max_length=13)
+
+    def __str__(self):
+        return self.bio
+
 class Neighborhood(models.Model):
     neighborhood_image = CloudinaryField('image',default='Image')
     neighborhood_name = models.CharField(max_length=50,null=True)

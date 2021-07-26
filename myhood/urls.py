@@ -6,5 +6,7 @@ urlpatterns =[
     path('',views.index,name='index'),
     path('add_post/',views.add_post,name='add_post'),
     path('businesses/',views.businesses,name='businesses'),
-    path('post_chat/',views.post_chat,name='post_chat')
+    path('post_chat/',views.post_chat,name='post_chat'),
+    path('accounts/profile/<id>',views.profile,name='profile'),
+    path('update/',views.updateprofile,name = 'updateprofile'),
 ]

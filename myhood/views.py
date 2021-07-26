@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
-from .forms import BusinessForm,ChatForm
+from .forms import BusinessForm,ChatForm,ProfileUpdateForm,ProfileForm
 from django.contrib import messages
-from .models import Business,Chat
+from .models import Business,Chat,Profile
+from django.contrib.auth.models import User
 
 def  index(request):
     chats=Chat.objects.all()
@@ -43,3 +44,34 @@ def post_chat(request):
         "form": form,
     }
     return render(request,'main/chats.html',context)
+
+def profile(request,id):
+    profile_data = User.objects.get(id=id)
+    current_user = request.user
+    if request.method =='POST':
+        profile=ProfileUpdateForm(request.POST,request.FILES,instance=current_user.profile)
+        if profile.is_valid():
+            message.success(request,'Your profile has been updated!')
+            return redirect('profile')
+    else:
+        profile=ProfileUpdateForm(instance=request.user)
+    context={"profile":profile,"current_user": current_user,"profile_data":profile_data}
+    return render(request, 'main/profile.html',context)
+
+def updateprofile(request):
+    current_user = request.user
+    profile=Profile.objects.all()
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, request.FILES) 
+
+        if form.is_valid() and profile_form.is_valid():
+            user_form = form.save()
+            custom_form = profile_form.save(False)
+            custom_form.user = user_form
+            custom_form.save()
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+
+    return render(request, 'main/updateprofile.html',{"form": form} )

@@ -86,3 +86,15 @@ def single_business(request,id):
 def neighbor(request):
     neighbor=Neighborhood.objects.all()
     return render(request,'main/places.html',{'neighbor':neighbor})
+
+def search(request):
+    if 'Search' in request.GET and request.GET['Search']:
+        search_term=request.GET.get('Search')
+        searched_results=Business.search(search_term)
+        message=f"{search_term}"
+        
+        return render(request,'main/search.html',{"message":message,"results":searched_results})
+    else:
+        message="You haven't searched for any term"
+        return render(request,"main/search.html",{"message":message})
+

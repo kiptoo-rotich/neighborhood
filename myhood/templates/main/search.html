@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        {%if results%}
+        <h3>Found {{results|length}} of searched term {{message}}</h3>
+        {%else%}
+        <h3>Found 0 results for searched term {{message}}</h3>
+        {%endif%}
+    </div>
+
+    <div class="row">
+        {%if results%}
+        {%for result in results%}
+        <div class="col-sm-6 col-md-3">
+            <h1>{{result.business_name}}</h1>
+            <img src="{{result.business_image.url}}" alt="Image">
+            <p>{{result.business_service}}</p>
+            <p>{{result.business_name}}</p>
+            <p>Posted by {{result.user}} {{result.created_on}}</p>
+            <p>Email address: {{result.email}}</p>
+        </div>
+        {%endfor%}
+        {%else%}
+        <h2 class="text-center bg-warning">Nothing</h2>
+        {%endif%}
+    </div>
+</div>
+{%endblock%}

@@ -35,12 +35,19 @@ class Business(models.Model):
     business_image = CloudinaryField('image',default='Image')
     business_name = models.CharField(max_length=30)
     neighborhood = models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
-    business_email = models.EmailField(max_length=30)
+    business_name = models.EmailField(max_length=30)
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     business_service= HTMLField()
+    business_email = models.EmailField(max_length=30)
+
 
     def __str__(self):
         return self.business_image
+    
+    @classmethod
+    def search(cls,search_term):
+        business=cls.objects.filter(business_name__icontains=search_term)
+        return business
     
 class Chat(models.Model):
     message = HTMLField()

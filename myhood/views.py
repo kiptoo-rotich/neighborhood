@@ -75,3 +75,10 @@ def updateprofile(request):
         form = ProfileUpdateForm(instance=request.user)
 
     return render(request, 'main/updateprofile.html',{"form": form} )
+
+def single_business(request,id):
+    try:
+        post=Business.objects.get(id=id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,'main/single_business.html',{'post':post})

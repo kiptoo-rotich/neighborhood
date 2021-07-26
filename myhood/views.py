@@ -3,6 +3,8 @@ from .forms import BusinessForm,ChatForm,ProfileUpdateForm,ProfileForm
 from django.contrib import messages
 from .models import Business,Chat,Profile,Neighborhood
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
 
 @login_required(login_url='/accounts/login/')
 def  index(request):

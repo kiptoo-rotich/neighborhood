@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import BusinessForm,ChatForm,ProfileUpdateForm,ProfileForm
 from django.contrib import messages
-from .models import Business,Chat,Profile
+from .models import Business,Chat,Profile,Neighborhood
 from django.contrib.auth.models import User
 
 def  index(request):
@@ -82,3 +82,7 @@ def single_business(request,id):
     except DoesNotExist:
         raise Http404()
     return render(request,'main/single_business.html',{'business':business})
+
+def neighbor(request):
+    neighbor=Neighborhood.objects.all()
+    return render(request,'main/places.html',{'neighbor':neighbor})

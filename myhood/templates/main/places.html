@@ -1,8 +1,13 @@
 {%extends 'base.html'%}
 {%block content%}
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="row" style="margin-top:3%;background-color:white;border-radius:5px;">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            {%for neighbor in neighbor%}
+            <img src="{{neighbor.neighborhood_image.url}}" alt="Image" class="img-responsive" style="width:100%;">
+            <h3>{{neighbor.neighborhood_name}}</h3>
+            <h4>{{neighbor.neighborhood_location}}</h4>
+            {%endfor%}
         </div>
     </div>
 </div>

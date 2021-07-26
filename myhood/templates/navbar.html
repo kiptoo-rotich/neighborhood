@@ -15,8 +15,8 @@
             <ul id="navbar" style="display:flex;flex-direction:row;margin:10px;list-style:none;">
                 <li>
                     <center>
-                        <form class="form-inline" action="">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        <form class="form-inline" action="{%url 'search'%}" name="search" role="search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search business" aria-label="Search"
                                 name="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>

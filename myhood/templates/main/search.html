@@ -9,16 +9,15 @@
         {%endif%}
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top:3%;background-color:white;">
         {%if results%}
         {%for result in results%}
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-12 col-md-12">
             <h1>{{result.business_name}}</h1>
-            <img src="{{result.business_image.url}}" alt="Image">
+            <img src="{{result.business_image.url}}" alt="Image" class="img-responsive" style="width:100%;">
             <p>{{result.business_service}}</p>
-            <p>{{result.business_name}}</p>
-            <p>Posted by {{result.user}} {{result.created_on}}</p>
-            <p>Email address: {{result.email}}</p>
+            <p><i>Posted on {{result.created_on}}</i></p>
+            <p>Email address: {{result.business_email}}</p>
         </div>
         {%endfor%}
         {%else%}

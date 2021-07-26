@@ -2,15 +2,20 @@
 {%load bootstrap3%}
 {%block content%}
 <div class="container">
-    {%for business in business%}
-
-    <div style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;" class="col-xm-12 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{business.business_image.url}}" alt="" class="img-responsive" width="100%">
-        <h3>{{ business.business_name}}</h3>
-        <p>{{business.business_service}}</p>
-
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2" style="margin-top:2%;">
+            <a href="{%url 'add_post'%}" class="btn btn-success btn-lg" style="font-weight:500;">Add business</a>
+        </div>
+        <div class="col-xm-12 col-sm-10 col-md-10 col-lg-10">
+            {%for business in business%}
+            <div style="background-color:rgb(255, 255, 255);border-radius:5px; margin-bottom: 1%; padding: 1%;margin-top: 2%;"
+                class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="{{business.business_image.url}}" alt="" class="img-responsive" width="100%">
+                <h3>{{ business.business_name}}</h3>
+                <p>{{business.business_service}}</p>
+                <p><i>Posted on {{business.created_on}}</i></p>
+            </div>
+            {%endfor%}
+        </div>
     </div>
-    {%endfor%}
-
-
     {%endblock%}

@@ -31,6 +31,7 @@ class Business(models.Model):
     business_name = models.CharField(max_length=30)
     neighborhood = models.ForeignKey('Neighborhood',null=True,on_delete=models.CASCADE)
     business_email = models.EmailField(max_length=30)
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
     business_service= HTMLField()
 
 class Chat(models.Model):
